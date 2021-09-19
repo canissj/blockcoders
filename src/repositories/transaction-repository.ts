@@ -1,0 +1,20 @@
+import { Inject, Injectable } from '@nestjs/common';
+import { Transaction } from '../models/transaction';
+import { Database } from './db';
+
+export interface TransactionRepository {
+  getTransactions(filters?: TransactionFilters): Promise<Transaction[]>;
+  saveTransactions(trx: Transaction[]): Promise<void>;
+}
+
+@Injectable()
+export class EthTransactionRepository implements TransactionRepository {
+  constructor(@Inject('TRX_DB') private db: Database) {}
+
+  async getTransactions(filters?: TransactionFilters): Promise<Transaction[]> {
+    return await this.db.getTransactions(filters);
+  }
+  async saveTransactions(trx: Transaction[]): Promise<void> {
+    return await this.db.saveTransactions(trx);
+  }
+}
