@@ -9,11 +9,11 @@ export class Transaction {
   blockNumber: string;
 
   @Prop()
-  hash: number;
+  hash: string;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);
 
 export class TransactionDTO {
-  constructor(public blockNumber: string, public hash: number) {}
+  constructor(public blockNumber: string, public hash: string) {}
 }

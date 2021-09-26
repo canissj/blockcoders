@@ -3,7 +3,7 @@ import { TransactionService } from '../services/transaction-service';
 
 @Controller()
 export class TransactionController {
-  constructor(private readonly transactionService: TransactionService) {}
+  constructor(private transactionService: TransactionService) {}
 
   @Get()
   getTransaction(): string {
