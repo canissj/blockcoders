@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { TransactionFilters } from 'src/models/transaction-filters';
+import { TransactionFilters } from 'src/models/transaction.filters';
 import { Transaction } from '../models/transaction';
 import { Database } from './db';
 

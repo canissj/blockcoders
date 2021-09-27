@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { Transaction } from 'src/models/transaction';
-import { TransactionFilters } from 'src/models/transaction-filters';
-import { TransactionService } from '../services/transaction-service';
+import { TransactionFilters } from 'src/models/transaction.filters';
+import { TransactionService } from '../services/transaction.service';
 
 @Controller('transactions')
 export class TransactionController {

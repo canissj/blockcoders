@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
-import { TransactionController } from './controllers/transaction-controller';
-import { EthNetworkService } from './services/eth-network-service';
+import { TransactionController } from './controllers/transaction.controller';
+import { EthNetworkService } from './services/eth.network.service';
 import { ethers } from 'ethers';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Transaction, TransactionSchema } from './models/transaction';
-import { EthTransactionRepository } from './repositories/transaction-repository';
+import { EthTransactionRepository } from './repositories/transaction.repository';
 import { MongoDB } from './repositories/db';
 import { EventEmitterModule } from '@nestjs/event-emitter';
-import { TransactionService } from './services/transaction-service';
+import { TransactionService } from './services/transaction.service';
 
 @Module({
   imports: [
