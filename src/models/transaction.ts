@@ -10,10 +10,21 @@ export class Transaction {
 
   @Prop()
   hash: string;
+
+  @Prop()
+  from: string;
+
+  @Prop()
+  to: string;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);
 
 export class TransactionDTO {
-  constructor(public blockNumber: string, public hash: string) {}
+  constructor(
+    public blockNumber: string,
+    public hash: string,
+    public from: string,
+    public to: string,
+  ) {}
 }

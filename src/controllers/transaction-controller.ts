@@ -1,12 +1,21 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
+import { Transaction } from 'src/models/transaction';
+import { TransactionFilters } from 'src/models/transaction-filters';
 import { TransactionService } from '../services/transaction-service';
 
-@Controller()
+@Controller('transactions')
 export class TransactionController {
   constructor(private transactionService: TransactionService) {}
 
   @Get()
-  getTransaction(): string {
-    return 'hey';
+  getTransaction(
+    @Query('blockNumber') blockNumber,
+    @Query('hash') hash,
+    @Query('fromAddress') fromAddress,
+    @Query('toAddress') toAddress,
+  ): Promise<Transaction[]> {
+    return this.transactionService.getTransactions(
+      new TransactionFilters(blockNumber, hash, fromAddress, toAddress),
+    );
   }
 }

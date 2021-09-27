@@ -17,9 +17,8 @@ export class EthNetworkService {
     this.ws.on('block', (blockNumber) => {
       console.log(`Block number: ${blockNumber}`);
       this.api.getBlockWithTransactions(blockNumber).then((block) => {
-        console.log('Transactions fetched');
         const trx = block.transactions.map(
-          (trx) => new TransactionDTO(blockNumber, trx.hash),
+          (trx) => new TransactionDTO(blockNumber, trx.hash, trx.from, trx.to),
         );
         eventEmitter.emit(
           TransactionCreatedEventId,
